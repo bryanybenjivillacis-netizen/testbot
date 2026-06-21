@@ -2701,7 +2701,7 @@ async def ayuda(ctx):
 async def on_ready():
     log.info(f"Bot conectado: {bot.user} (ID: {bot.user.id})")
     await bot.change_presence(
-        activity=discord.Activity(type=discord.ActivityType.watching, name=f"{PREFIX}ayuda | AntiNuke")
+        activity=discord.Activity(type=discord.ActivityType.watching, name=f"{PREFIX}ayuda | Empty")
     )
 
 @bot.event
