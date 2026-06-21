@@ -1,0 +1,131 @@
+{
+  "id server 1": {
+    "activo": true,
+    "whitelist": [],
+    "owner_id": null,
+    "limites": {
+      "ban": 3,
+      "kick": 3,
+      "roles": 3,
+      "canales": 3,
+      "webhooks": 3
+    },
+    "ventana": 10,
+    "accion": "ban",
+    "log_channel": null,
+    "antiraid": {
+      "activo": false,
+      "joins_limite": 10,
+      "joins_ventana": 10,
+      "accion": "kick"
+    },
+    "antilinks": {
+      "activo": false,
+      "whitelist_canales": [],
+      "whitelist_roles": []
+    },
+    "antispam": {
+      "activo": false,
+      "mensajes_limite": 5,
+      "ventana": 5
+    },
+    "antibot": {
+      "activo": false
+    },
+    "verificacion": {
+      "activo": false,
+      "rol_verificado": null,
+      "rol_no_verificado": null,
+      "canal": null,
+      "emoji": "✅"
+    },
+    "warn_sistema": {},
+    "mute_rol": null
+  },
+  "id server 2": {
+    "activo": true,
+    "whitelist": [],
+    "owner_id": null,
+    "limites": {
+      "ban": 3,
+      "kick": 3,
+      "roles": 3,
+      "canales": 3,
+      "webhooks": 3
+    },
+    "ventana": 10,
+    "accion": "ban",
+    "log_channel": null,
+    "antiraid": {
+      "activo": false,
+      "joins_limite": 10,
+      "joins_ventana": 10,
+      "accion": "kick"
+    },
+    "antilinks": {
+      "activo": false,
+      "whitelist_canales": [],
+      "whitelist_roles": []
+    },
+    "antispam": {
+      "activo": false,
+      "mensajes_limite": 5,
+      "ventana": 5
+    },
+    "antibot": {
+      "activo": false
+    },
+    "verificacion": {
+      "activo": false,
+      "rol_verificado": null,
+      "rol_no_verificado": null,
+      "canal": null,
+      "emoji": "✅"
+    },
+    "warn_sistema": {},
+    "mute_rol": null
+  },
+  "id server 3": {
+    "activo": true,
+    "whitelist": [],
+    "owner_id": null,
+    "limites": {
+      "ban": 3,
+      "kick": 3,
+      "roles": 3,
+      "canales": 3,
+      "webhooks": 3
+    },
+    "ventana": 10,
+    "accion": "ban",
+    "log_channel": null,
+    "antiraid": {
+      "activo": false,
+      "joins_limite": 10,
+      "joins_ventana": 10,
+      "accion": "kick"
+    },
+    "antilinks": {
+      "activo": false,
+      "whitelist_canales": [],
+      "whitelist_roles": []
+    },
+    "antispam": {
+      "activo": false,
+      "mensajes_limite": 5,
+      "ventana": 5
+    },
+    "antibot": {
+      "activo": false
+    },
+    "verificacion": {
+      "activo": false,
+      "rol_verificado": null,
+      "rol_no_verificado": null,
+      "canal": null,
+      "emoji": "✅"
+    },
+    "warn_sistema": {},
+    "mute_rol": null
+  }
+}
