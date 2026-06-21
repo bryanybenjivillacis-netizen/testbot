@@ -705,7 +705,7 @@ async def antinuke_status(ctx):
     embed.add_field(name="Canal logs", value=f"<#{log_ch}>" if log_ch else "No configurado", inline=False)
 
     # Firma final (Marca personal)
-    embed.set_footer(text="by koss")
+    embed.set_footer(text="empty")
     
     await ctx.send(embed=embed)
 
