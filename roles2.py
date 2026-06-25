@@ -50,6 +50,8 @@ CONFIG          = cargar_config()
 TOKEN           = CONFIG["token"]
 PREFIX          = CONFIG.get("prefix", "!")
 ROLES_STAFF_CFG = CONFIG.get("roles_staff", ["👑 Administración", "🛡️ Moderador"])
+# ── MODIFICACIÓN: ID del dueño del bot desde config.json ─────
+BOT_OWNER_ID    = int(CONFIG["botOwnerID"]) if CONFIG.get("botOwnerID") else None
 
 # ─────────────────────────────────────────────────────────────
 #  BOT
@@ -75,7 +77,12 @@ def es_staff(ctx) -> bool:
     )
 
 def es_owner_o_admin(ctx) -> bool:
-    return ctx.author.id == ctx.guild.owner_id or ctx.author.guild_permissions.administrator
+    # ── MODIFICACIÓN: permite también al dueño del bot ────────
+    return (
+        ctx.author.id == ctx.guild.owner_id
+        or (BOT_OWNER_ID and ctx.author.id == BOT_OWNER_ID)
+        or ctx.author.guild_permissions.administrator
+    )
 
 # ═════════════════════════════════════════════════════════════
 #  🛡️ ANTINUKE — SISTEMA COMPLETO
@@ -183,8 +190,10 @@ def es_seguro(user_id: int, guild: discord.Guild) -> bool:
 def es_owner_an(ctx) -> bool:
     cfg   = cargar_antinuke(ctx.guild.id)
     owner = cfg.get("owner_id")
+    # ── MODIFICACIÓN: permite también al dueño del bot ────────
     return (
         ctx.author.id == ctx.guild.owner_id
+        or (BOT_OWNER_ID and ctx.author.id == BOT_OWNER_ID)
         or (owner and ctx.author.id == int(owner))
     )
 
@@ -244,7 +253,7 @@ async def on_member_ban(guild: discord.Guild, user: discord.User):
     cfg = cargar_antinuke(guild.id)
     if not cfg.get("activo"):
         return
-    await asyncio.sleep(0.5)
+    await asyncio.sleep(0.1)  # OPTIMIZACIÓN: reducido de 0.5s a 0.1s
     try:
         entries = [e async for e in guild.audit_logs(limit=5, action=discord.AuditLogAction.ban)]
         if not entries:
@@ -285,7 +294,7 @@ async def on_member_remove(member: discord.Member):
     cfg = cargar_antinuke(member.guild.id)
     if not cfg.get("activo"):
         return
-    await asyncio.sleep(0.5)
+    await asyncio.sleep(0.1)  # OPTIMIZACIÓN: reducido de 0.5s a 0.1s
     try:
         entries = [e async for e in member.guild.audit_logs(limit=5, action=discord.AuditLogAction.kick)]
         if not entries:
@@ -320,7 +329,7 @@ async def on_guild_role_delete(role: discord.Role):
     cfg = cargar_antinuke(role.guild.id)
     if not cfg.get("activo"):
         return
-    await asyncio.sleep(0.5)
+    await asyncio.sleep(0.1)  # OPTIMIZACIÓN: reducido de 0.5s a 0.1s
     try:
         entries = [e async for e in role.guild.audit_logs(limit=5, action=discord.AuditLogAction.role_delete)]
         if not entries:
@@ -363,7 +372,7 @@ async def on_guild_role_create(role: discord.Role):
     cfg = cargar_antinuke(role.guild.id)
     if not cfg.get("activo"):
         return
-    await asyncio.sleep(0.5)
+    await asyncio.sleep(0.1)  # OPTIMIZACIÓN: reducido de 0.5s a 0.1s
     try:
         entries = [e async for e in role.guild.audit_logs(limit=5, action=discord.AuditLogAction.role_create)]
         if not entries:
@@ -399,7 +408,7 @@ async def on_guild_channel_delete(channel):
     cfg = cargar_antinuke(channel.guild.id)
     if not cfg.get("activo"):
         return
-    await asyncio.sleep(0.5)
+    await asyncio.sleep(0.1)  # OPTIMIZACIÓN: reducido de 0.5s a 0.1s
     try:
         entries = [e async for e in channel.guild.audit_logs(limit=5, action=discord.AuditLogAction.channel_delete)]
         if not entries:
@@ -467,7 +476,7 @@ async def on_guild_channel_create(channel):
     cfg = cargar_antinuke(channel.guild.id)
     if not cfg.get("activo"):
         return
-    await asyncio.sleep(0.5)
+    await asyncio.sleep(0.1)  # OPTIMIZACIÓN: reducido de 0.5s a 0.1s
     try:
         entries = [e async for e in channel.guild.audit_logs(limit=5, action=discord.AuditLogAction.channel_create)]
         if not entries:
@@ -500,7 +509,7 @@ async def on_webhooks_update(channel):
     cfg = cargar_antinuke(channel.guild.id)
     if not cfg.get("activo"):
         return
-    await asyncio.sleep(0.5)
+    await asyncio.sleep(0.1)  # OPTIMIZACIÓN: reducido de 0.5s a 0.1s
     try:
         entries = [e async for e in channel.guild.audit_logs(limit=5, action=discord.AuditLogAction.webhook_create)]
         if not entries:
