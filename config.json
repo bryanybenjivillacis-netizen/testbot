@@ -1,5 +1,7 @@
 {
+  "token": "TU_TOKEN_AQUÍ",
   "prefix": "!",
+  "owner_id": "893295635837644810",
   "puntos_max": 7,
   "roles_staff": [
     "👑 Administración",
